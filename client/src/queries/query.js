@@ -15,7 +15,6 @@ const getApartments = gql`
 `;
 
 const getApartmentQuery = gql`
-{
     query getApartment($id: ID) {
         apartment(id: $id) {
             id
@@ -27,5 +26,6 @@ const getApartmentQuery = gql`
             image
         }
     }
-}
 `;
+
+export { getApartments, getApartmentQuery };

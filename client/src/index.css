@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  position: relative;
+}
+
+.price-box {
+  width: 100vw;
+  float: left;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1000;
+  background-color: rgba(252, 252, 252, 0.612);
+  padding-left: 15px;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.image {
+  width: 100vw;
+}
+
+.text-box {
+  padding: 0px 15px;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-box {
+  width: 33vw;
+  text-align: center;
+}
