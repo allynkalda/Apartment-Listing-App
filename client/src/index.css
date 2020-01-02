@@ -36,6 +36,7 @@ code {
 
 .text-box {
   padding: 0px 15px;
+  border-bottom: 1px solid #ccc;
 }
 
 .info-box {
@@ -47,5 +48,12 @@ code {
 
 .icon-box {
   width: 33vw;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #ccc;
+  height: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }

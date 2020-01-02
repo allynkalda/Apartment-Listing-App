@@ -26,21 +26,15 @@ export default function Landing() {
                     </div>
                     <div className="info-box">
                         <div className="icon-box">
-                        <span>
                             <img src="./images/check.png"></img>
-                        </span>
                             {item.sqm} m2
                         </div>
                         <div className="icon-box">
-                        <span>
                             <img src="./images/bedroom.png"></img>
-                        </span>
                             {item.bedrooms}
                         </div>
                         <div className="icon-box">
-                        <span>
                             <img src="./images/bathroom.png"></img>
-                        </span>
                             {item.bathrooms}
                         </div>
                     </div>
