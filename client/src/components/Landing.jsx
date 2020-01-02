@@ -9,20 +9,20 @@ export default function Landing() {
     if (error) return <p>Error!</p>
 
     return (
-        <div>
+        <div className="main-container">
             {
             data.apartments.map(item => {
                 console.log(item.image)
-            return(
-                <div>
-                    <div className="container">
+            return (
+                <div className="container">
+                    <div className="image-container">
                     <img src={item.image} alt="apartment" className="image"></img>
                         <div className="price-box">
-                        <p>{item.price} €</p>
+                        <p className="text-space">{item.price} €</p>
                         </div>
                     </div>
                     <div className="text-box">
-                        <h3>{item.title}</h3>
+                        <h3 className="text-space">{item.title}</h3>
                     </div>
                     <div className="info-box">
                         <div className="icon-box">

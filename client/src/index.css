@@ -12,31 +12,62 @@ code {
     monospace;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
+  margin: 0 1rem;
+}
+
+.image-container {
   position: relative;
 }
 
+@media only screen and (min-width: 650px) {
+  .main-container {
+    flex-direction: row;
+  }
+  .container {
+    width: 30vw;
+  }
+  .image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .image {
+    width: 100vw;
+  }
+}
+
+.text-space {
+  padding-left: 1rem;
+}
+
 .price-box {
-  width: 100vw;
   float: left;
   position: absolute;
+  width: 100%;
   left: 0px;
   bottom: 0px;
   z-index: 1000;
   background-color: rgba(252, 252, 252, 0.612);
-  padding-left: 15px;
   color: black;
   font-weight: bold;
   font-size: 1.5rem;
 }
 
-.image {
-  width: 100vw;
-}
-
 .text-box {
-  padding: 0px 15px;
   border-bottom: 1px solid #ccc;
+  width: 100%;
 }
 
 .info-box {
@@ -44,6 +75,7 @@ code {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%
 }
 
 .icon-box {
