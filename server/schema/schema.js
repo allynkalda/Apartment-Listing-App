@@ -10,6 +10,14 @@ const {
     GraphQLList,
 } = graphql;
 
+const LocationType = new GraphQLObjectType({
+    name: 'Location',
+    fields: ( ) => ({
+        lat: { type: GraphQLInt },
+        long: { type: GraphQLInt }
+    })
+})
+
 const ApartmentType = new GraphQLObjectType({
     name: 'Apartment',
     fields: ( ) => ({
@@ -19,7 +27,8 @@ const ApartmentType = new GraphQLObjectType({
         sqm: { type: GraphQLInt },
         bedrooms: { type: GraphQLInt },
         bathrooms: { type: GraphQLInt },
-        image: { type: GraphQLString }
+        image: { type: GraphQLString },
+        location: { type: LocationType }
     })
 });
 
