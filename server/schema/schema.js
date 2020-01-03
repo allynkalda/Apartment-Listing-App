@@ -38,6 +38,16 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 return Apartment.find({});
             }
+        },
+        apartmentsFilter: {
+            type: new GraphQLList(ApartmentType),
+            args: { price1: { type: GraphQLInt }, price2: { type: GraphQLInt },
+                    sqm1: { type: GraphQLInt }, sqm2: { type: GraphQLInt },
+                    bedrooms: { type: GraphQLInt}},
+            resolve(parent, args) {
+                return Apartment.find({ price: { $gte: args.price1, $lte: args.price2 },
+                sqm: { $gte: args.sqm1, $lte: args.sqm2 }, bedrooms: { $gte: args.bedrooms }});
+            }
         }
     }
 });
