@@ -8,13 +8,14 @@ const {
     GraphQLID,
     GraphQLInt,
     GraphQLList,
+    GraphQLFloat
 } = graphql;
 
 const LocationType = new GraphQLObjectType({
     name: 'Location',
     fields: ( ) => ({
-        lat: { type: GraphQLInt },
-        long: { type: GraphQLInt }
+        lat: { type: GraphQLFloat },
+        long: { type: GraphQLFloat }
     })
 })
 
@@ -72,7 +73,9 @@ const Mutation = new GraphQLObjectType({
                 sqm: { type: GraphQLInt },
                 bedrooms: { type: GraphQLInt },
                 bathrooms: { type: GraphQLInt },
-                image: { type: GraphQLString }
+                image: { type: GraphQLString },
+                lat: { type: GraphQLFloat },
+                long: { type: GraphQLFloat }
             },
             resolve(parent, args) {
                 let apartment = new Apartment({
@@ -81,7 +84,11 @@ const Mutation = new GraphQLObjectType({
                     sqm: args.sqm,
                     bedrooms: args.bedrooms,
                     bathrooms: args.bathrooms,
-                    image: args.image
+                    image: args.image,
+                    location: {
+                        lat: args.lat,
+                        long: args.long
+                    }
                 });
                 return apartment.save();
             }

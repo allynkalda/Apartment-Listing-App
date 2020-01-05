@@ -28,4 +28,18 @@ const getApartmentQuery = gql`
     }
 `;
 
-export { getApartments, getApartmentQuery };
+const getFilteredQuery = gql`
+    query getFiltered($price1: Int, $price2: Int, $sqm1: Int, $sqm2: Int, $bedrooms: Int) {
+        apartmentsFilter(price1: $price1, price2: $price2, sqm1: $sqm1, sqm2: $sqm2, bedrooms: $bedrooms) {
+            id
+            title
+            price
+            sqm
+            bedrooms
+            bathrooms
+            image
+        }
+    }
+`;
+
+export { getApartments, getApartmentQuery, getFilteredQuery };

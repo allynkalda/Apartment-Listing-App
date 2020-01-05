@@ -8,6 +8,7 @@ const apartmentSchema = new Schema({
     bedrooms: Number,
     bathrooms: Number,
     image: String,
+    location: Object    
 });
 
 module.exports = mongoose.model('Apartment', apartmentSchema);

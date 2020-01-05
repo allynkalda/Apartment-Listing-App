@@ -1,5 +1,7 @@
-body {
+
+body, html {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,6 +12,23 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.navbar {
+  height: 3rem;
+  width: 100vw;
+  background-color: #F7DBA7;
+  padding: 10px;
+}
+
+input {
+  width: 50%;
+  padding: 1em;
+  margin: 0.5rem 1rem;
+  border-radius: 10px;
+}
+input:focus {
+  outline: none;
 }
 
 .main-container {
@@ -29,6 +48,7 @@ code {
 @media only screen and (min-width: 650px) {
   .main-container {
     flex-direction: row;
+    flex-wrap: wrap
   }
   .container {
     width: 30vw;
@@ -88,4 +108,8 @@ code {
   height: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.filter-container {
+  text-align: center;
 }
