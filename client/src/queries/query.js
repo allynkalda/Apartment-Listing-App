@@ -10,6 +10,10 @@ const getApartments = gql`
         bedrooms
         bathrooms
         image
+        location {
+                lat
+                lng
+            }
     }
 }
 `;
@@ -24,6 +28,10 @@ const getApartmentQuery = gql`
             bedrooms
             bathrooms
             image
+            location {
+                lat
+                lng
+            }
         }
     }
 `;
@@ -38,6 +46,10 @@ const getFilteredQuery = gql`
             bedrooms
             bathrooms
             image
+            location {
+                lat
+                lng
+            }
         }
     }
 `;

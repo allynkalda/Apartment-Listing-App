@@ -10,7 +10,7 @@ export default function List({ loading, error, array }) {
             {
             array.map(item => {
             return (
-                <div className="container">
+                <div className="container" key={item.id}>
                     <div className="image-container">
                     <img src={item.image} alt="apartment" className="image"></img>
                         <div className="price-box">

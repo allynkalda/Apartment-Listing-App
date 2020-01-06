@@ -117,3 +117,28 @@ input:focus {
 .filter-container {
   text-align: center;
 }
+
+
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  user-select: none;
+  transform: translate(-50%, -50%);
+}
+
+.marker:hover {
+  z-index: 2;
+}
+
+.info {
+  z-index: 3;
+  height: 3rem;
+  width: 3rem;
+  background-color: beige;
+}
