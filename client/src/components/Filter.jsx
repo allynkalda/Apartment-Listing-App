@@ -19,7 +19,6 @@ export default function Filter() {
   const [ getApartment, { data, loading, error } ] = useLazyQuery(getFilteredQuery);
 
     console.log(data);
-    console.log('showlist', showList)
 
   const changeHandler = (evt) => {
     const value = evt.target.value;
@@ -28,6 +27,10 @@ export default function Filter() {
     [evt.target.name]: value
     })
   };
+
+  const inputForm = () => {
+    
+  }
 
   return (
     <div className="filter-container">

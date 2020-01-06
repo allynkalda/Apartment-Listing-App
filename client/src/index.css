@@ -19,6 +19,10 @@ code {
   width: 100vw;
   background-color: #F7DBA7;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 input {
