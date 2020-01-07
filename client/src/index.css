@@ -142,3 +142,19 @@ input:focus {
   width: 3rem;
   background-color: beige;
 }
+
+.small-image {
+  width: 8rem;
+  height: auto
+}
+
+.infowindow {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.05em;
+}

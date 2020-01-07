@@ -28,10 +28,6 @@ export default function Filter() {
     })
   };
 
-  const inputForm = () => {
-    
-  }
-
   return (
     <div className="filter-container">
       {

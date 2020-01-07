@@ -29,6 +29,7 @@ it('should render button and show correct icon onclick', () => {
   expect(button).toBeDefined();
   expect(arrowUp).toBeDefined();
   button.props.onClick();
+  expect(clickHandler).toHaveBeenCalled();
   const arrowDown = component.findByType(ArrowDropDownIcon);
   expect(arrowDown).toBeDefined();
 });

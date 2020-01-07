@@ -51,16 +51,77 @@
 
 // // export default MapContainer;
 
-import React from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React, { useState } from 'react';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import { useQuery } from '@apollo/react-hooks';
+import { getApartments } from '../queries/query';
 
-const MapContainer = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={12}
-    defaultCenter={{ lat: 41.3851, lng: 2.1734 }}
-  >
-    <Marker position={{ lat: 41.3851, lng: 2.1734 }} />
-  </GoogleMap>
-))
+const MapContainer = () => {
+
+  const [ selected, setSelected ] = useState({});
+
+  const { loading, error, data } = useQuery(getApartments);
+  console.log(data.apartments[0].location)
+
+  const onLoad = marker => {
+    console.log('marker: ', marker)
+  }
+
+  const onSelect = item => {
+    setSelected(item);
+    console.log(item);
+  }
+  
+  
+     return (
+      <LoadScript
+        id="script-loader"
+        googleMapsApiKey='AIzaSyB6xHfPLxTArJQQzUVAs2EV6CZG6UT9HCU'
+      >
+        <GoogleMap
+          id='example-map'
+          mapContainerStyle={{
+            height: "70vh",
+            width: "100%"
+          }}
+          zoom={13}
+          center={{
+            lat: 41.3851, lng: 2.1734
+          }}
+        >
+          {
+            data && data.apartments ?
+            data.apartments.map(item => {
+              return (
+              <Marker 
+              onLoad={onLoad}
+              position={item.location}
+              onClick={() => onSelect(item)}
+              />
+              )
+            }) : null
+          }
+          {
+            selected.location ?
+            (
+              <InfoWindow
+              onLoad={onLoad}
+              position={selected.location}
+              onCloseClick={() => setSelected({})}
+            >
+              <div className="infowindow">
+                <p>{selected.title}</p>
+                <img src={selected.image} className="small-image" alt="rental"/>
+                <p>price: {selected.price}</p>
+                <p>sqm2: {selected.sqm}</p>
+                <p>bedrooms: {selected.bedrooms}</p>
+              </div>
+            </InfoWindow>
+            ) : null
+          }
+        </GoogleMap>
+      </LoadScript>
+     )
+  }
 
 export default MapContainer;
