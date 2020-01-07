@@ -63,10 +63,6 @@ const MapContainer = () => {
   const { loading, error, data } = useQuery(getApartments);
   console.log(data.apartments[0].location)
 
-  const onLoad = marker => {
-    console.log('marker: ', marker)
-  }
-
   const onSelect = item => {
     setSelected(item);
     console.log(item);
@@ -94,7 +90,6 @@ const MapContainer = () => {
             data.apartments.map(item => {
               return (
               <Marker 
-              onLoad={onLoad}
               position={item.location}
               onClick={() => onSelect(item)}
               />
@@ -105,7 +100,6 @@ const MapContainer = () => {
             selected.location ?
             (
               <InfoWindow
-              onLoad={onLoad}
               position={selected.location}
               onCloseClick={() => setSelected({})}
             >

@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-export default function Navbar({ clickHandler }) {
+export default function Navbar({ clickHandler, onShowMap }) {
 
   const [ toggleArrow, setToggleArrow ] = useState(false);
 
@@ -13,6 +13,9 @@ export default function Navbar({ clickHandler }) {
       <Button onClick={() => { clickHandler(); 
                               setToggleArrow(!toggleArrow)} }>
       { !toggleArrow ? <ArrowDropUpIcon/> : <ArrowDropDownIcon /> }
+      </Button>
+      <Button variant="contained" color="primary" onClick={() => onShowMap()}>
+        Map
       </Button>
     </div>
   )

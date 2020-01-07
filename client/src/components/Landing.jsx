@@ -9,12 +9,15 @@ import MapContainer from './MapContainer';
 export default function Landing() {
 
   const [ showLanding, setShowLanding ] = useState(true);
-  const [ showMap, setShowMap ] = useState(true);
+  const [ showMap, setShowMap ] = useState(false);
   
   const { loading, error, data } = useQuery(getApartments);
 
   const clickHandler = () => {
     setShowLanding(!showLanding);
+  };
+  const onShowMap = () => {
+    setShowMap(!showMap);
   };
 
   const displayHandler = () => {
@@ -27,7 +30,10 @@ export default function Landing() {
 
   const landingPage = () => {
     if (showLanding && data) {
-      return <MapContainer array={data.apartments} loading={loading} error={error} />
+      if (showMap) {
+        return <MapContainer array={data.apartments} loading={loading} error={error} />
+      }
+      return <List array={data.apartments} loading={loading} error={error} />
     } else {
       return <Filter />
     }
@@ -35,7 +41,7 @@ export default function Landing() {
 
   return (
     <div>
-      <Navbar clickHandler={clickHandler} />
+      <Navbar clickHandler={clickHandler} onShowMap={onShowMap} />
       { landingPage() } 
     </div>
   )
