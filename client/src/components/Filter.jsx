@@ -3,8 +3,9 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { getFilteredQuery } from '../queries/query';
 import Button from '@material-ui/core/Button';
 import List from './List';
+import MapContainer from './MapContainer';
 
-export default function Filter() {
+export default function Filter({ showMap, showLanding}) {
 
   const [ showList, setShowList ] = useState(false);
 
@@ -18,8 +19,6 @@ export default function Filter() {
 
   const [ getApartment, { data, loading, error } ] = useLazyQuery(getFilteredQuery);
 
-    console.log(data);
-
   const changeHandler = (evt) => {
     const value = evt.target.value;
     setState({
@@ -28,11 +27,19 @@ export default function Filter() {
     })
   };
 
+  const mapOrList = () => {
+    if (!showMap && !showLanding) {
+      return <List array={data.apartmentsFilter} loading={loading} error={error} />
+    } else if (showMap && !showLanding) {
+      return <MapContainer array={data.apartmentsFilter} loading={loading} error={error} />
+    }
+  }
+
   return (
     <div className="filter-container">
       {
         showList && data ? 
-        <List array={data.apartmentsFilter} loading={loading} error={error} />
+        mapOrList()
         :
         <>
         <h4>Precio</h4>

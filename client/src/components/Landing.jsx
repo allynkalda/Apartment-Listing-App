@@ -23,17 +23,17 @@ export default function Landing() {
   const landingPage = () => {
     if (showLanding && data) {
       if (showMap) {
-        return <MapContainer array={data} loading={loading} error={error} />
+        return <MapContainer array={data.apartments} loading={loading} error={error} />
       }
       return <List array={data.apartments} loading={loading} error={error} />
     } else {
-      return <Filter />
+      return <Filter showLanding={showLanding} showMap={showMap} />
     }
   }
 
   return (
     <div>
-      <Navbar clickHandler={clickHandler} onShowMap={onShowMap} />
+      <Navbar clickHandler={clickHandler} onShowMap={onShowMap} showMap={showMap} />
       { landingPage() } 
     </div>
   )
