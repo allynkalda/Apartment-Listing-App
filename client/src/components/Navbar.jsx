@@ -15,7 +15,7 @@ export default function Navbar({ clickHandler, onShowMap, showMap }) {
       { !toggleArrow ? <ArrowDropUpIcon/> : <ArrowDropDownIcon /> }
       </Button>
       <Button variant="contained" color="primary" onClick={() => onShowMap()}>
-      { !showMap ? "List" : "Map"  }
+      { !showMap ? "Map" : "List" }
       </Button>
     </div>
   )
