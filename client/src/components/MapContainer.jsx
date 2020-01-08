@@ -53,22 +53,17 @@
 
 import React, { useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
-import { useQuery } from '@apollo/react-hooks';
-import { getApartments } from '../queries/query';
 
-const MapContainer = () => {
+const MapContainer = ({ array, loading, error}) => {
 
+  console.log(array);
   const [ selected, setSelected ] = useState({});
-
-  const { loading, error, data } = useQuery(getApartments);
-  console.log(data.apartments[0].location)
 
   const onSelect = item => {
     setSelected(item);
     console.log(item);
   }
-  
-  
+
      return (
       <LoadScript
         id="script-loader"
@@ -86,8 +81,8 @@ const MapContainer = () => {
           }}
         >
           {
-            data && data.apartments ?
-            data.apartments.map(item => {
+            array && array.apartments ?
+            array.apartments.map(item => {
               return (
               <Marker 
               position={item.location}

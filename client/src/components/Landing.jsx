@@ -20,18 +20,10 @@ export default function Landing() {
     setShowMap(!showMap);
   };
 
-  const displayHandler = () => {
-    if (showMap) {
-      return <MapContainer array={data.apartments} loading={loading} error={error} />
-    } else {
-      return <List array={data.apartments} loading={loading} error={error} />
-    }
-  }
-
   const landingPage = () => {
     if (showLanding && data) {
       if (showMap) {
-        return <MapContainer array={data.apartments} loading={loading} error={error} />
+        return <MapContainer array={data} loading={loading} error={error} />
       }
       return <List array={data.apartments} loading={loading} error={error} />
     } else {
