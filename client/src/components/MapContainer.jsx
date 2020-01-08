@@ -31,6 +31,7 @@ const MapContainer = ({ array, loading, error}) => {
             array.map(item => {
               return (
               <Marker 
+              key={item.id}
               position={item.location}
               onClick={() => onSelect(item)}
               />
