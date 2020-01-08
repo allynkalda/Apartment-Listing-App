@@ -22,15 +22,15 @@ export default function List({ loading, error, array }) {
                     </div>
                     <div className="info-box">
                         <div className="icon-box">
-                            <img src="./images/check.png"></img>
+                            <img src="./images/check.png" alt="check"></img>
                             {item.sqm} m2
                         </div>
                         <div className="icon-box">
-                            <img src="./images/bedroom.png"></img>
+                            <img src="./images/bedroom.png" alt="bedroom"></img>
                             {item.bedrooms}
                         </div>
                         <div className="icon-box">
-                            <img src="./images/bathroom.png"></img>
+                            <img src="./images/bathroom.png" alt="bathroom"></img>
                             {item.bathrooms}
                         </div>
                     </div>
