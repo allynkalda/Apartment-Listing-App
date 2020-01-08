@@ -49,7 +49,7 @@ export default function Filter({ showMap, showLanding}) {
           <input type="number" name="sqm1" placeholder="" onChange={(event) => changeHandler(event)}/>
           <input type="number" name="sqm2" placeholder="" onChange={(event) => changeHandler(event)}/>
         <h4>Habitaciones</h4>
-          <input type="text" name="bedrooms" placeholder="" onChange={(event) => changeHandler(event)}/>
+          <input type="text" name="bedrooms" placeholder="" onChange={(event) => changeHandler(event)}/>+
           <br />
         <Button variant="contained" color="secondary" onClick={() => { getApartment({ variables: { price1: Number(state.price1), 
                   price2: Number(state.price2), sqm1: Number(state.sqm1), sqm2: Number(state.sqm2),
