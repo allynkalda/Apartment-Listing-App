@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 
-const MapContainer = ({ array, loading, error}) => {
+const MapContainer = ({ array, isAdding }) => {
 
   const [ selected, setSelected ] = useState({});
+  const [ currentPosition, setCurrentPosition ] = useState({});
+
+  const defaultCenter = {
+    lat: 41.3851, lng: 2.1734
+  }
 
   const onSelect = item => {
     setSelected(item);
   }
+
+  const success = (position) => {
+    const latitude  = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const currentPosition = {
+      lat: latitude,
+      lng: longitude
+    }
+    setCurrentPosition(currentPosition);
+  }
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  })
 
      return (
       <LoadScript
@@ -22,9 +41,7 @@ const MapContainer = ({ array, loading, error}) => {
             width: "100%"
           }}
           zoom={13}
-          center={{
-            lat: 41.3851, lng: 2.1734
-          }}
+          center={currentPosition.lat ? currentPosition : defaultCenter}
         >
           {
             array ?
@@ -37,6 +54,14 @@ const MapContainer = ({ array, loading, error}) => {
               />
               )
             }) : null
+          }
+          {
+            isAdding ? 
+            <Marker
+            position={currentPosition}
+            drag={() => console.log('drag')}
+            draggable /> :
+            null
           }
           {
             selected.location ?

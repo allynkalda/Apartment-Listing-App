@@ -54,4 +54,22 @@ const getFilteredQuery = gql`
     }
 `;
 
-export { getApartments, getApartmentQuery, getFilteredQuery };
+const addApartmentMutation = gql`
+    mutation addApartment($title: String, $price: Int, $sqm: Int, $bedrooms: Int, $bathrooms: Int,
+        $image: String, $lat: Float, $lng: Float) {
+        addApartment(title: $title, price: $price, sqm: $sqm, bedrooms: $bedrooms, 
+        bathrooms: $bathrooms, image: $image, lat: $lat, lng: $lng) {
+            id
+            title
+            price
+            sqm
+            bedrooms
+            bathrooms
+            image
+            lat
+            lng
+        }
+    }
+`;
+
+export { getApartments, getApartmentQuery, getFilteredQuery, addApartmentMutation };
