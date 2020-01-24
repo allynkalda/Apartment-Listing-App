@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 
 const MapContainer = ({ array, isAdding }) => {
 
   const [ selected, setSelected ] = useState({});
   const [ currentPosition, setCurrentPosition ] = useState({});
+
+  const markerRef = useRef(null);
 
   const defaultCenter = {
     lat: 41.3851, lng: 2.1734
@@ -24,6 +26,12 @@ const MapContainer = ({ array, isAdding }) => {
     setCurrentPosition(currentPosition);
   }
 
+  const onMarkerDragEnd = (e) => {
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    setCurrentPosition({ lat, lng})
+  };
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
   })
@@ -40,6 +48,7 @@ const MapContainer = ({ array, isAdding }) => {
             height: "100vh",
             width: "100%"
           }}
+          draggable={true}
           zoom={13}
           center={currentPosition.lat ? currentPosition : defaultCenter}
         >
@@ -59,8 +68,9 @@ const MapContainer = ({ array, isAdding }) => {
             isAdding ? 
             <Marker
             position={currentPosition}
-            drag={() => console.log('drag')}
-            draggable /> :
+            ref={() => markerRef}
+            onDragEnd={(e) => onMarkerDragEnd(e)}
+            draggable={true} /> :
             null
           }
           {
