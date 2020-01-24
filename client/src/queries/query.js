@@ -59,7 +59,6 @@ const addApartmentMutation = gql`
         $image: String, $lat: Float, $lng: Float) {
         addApartment(title: $title, price: $price, sqm: $sqm, bedrooms: $bedrooms, 
         bathrooms: $bathrooms, image: $image, lat: $lat, lng: $lng) {
-            id
             title
             price
             sqm

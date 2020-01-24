@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import Button from '@material-ui/core/Button';
 
-const MapContainer = ({ array, isAdding }) => {
+const MapContainer = ({ array, isAdding, getLocation }) => {
 
   const [ selected, setSelected ] = useState({});
   const [ currentPosition, setCurrentPosition ] = useState({});
@@ -32,22 +33,46 @@ const MapContainer = ({ array, isAdding }) => {
     setCurrentPosition({ lat, lng})
   };
 
+  const footer = (
+    <div className="footer">
+      <div className="inner-footer">
+      <span className="location-text">Choose location and press</span>
+      <Button variant="contained" color="primary" onClick={() => getLocation(currentPosition)}>
+        Next
+      </Button>
+      </div>
+    </div>
+  );
+
+  const mapStyles = () => {
+    if (!isAdding) {
+      return {
+        marginTop: "-20px",
+        height: "100vh",
+        width: "100%"
+      }
+    } else {
+      return {
+        marginTop: "-20px",
+        height: "80vh",
+        width: "100%"
+      }
+    }
+  }
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
   })
 
      return (
+    <>
       <LoadScript
         id="script-loader"
         googleMapsApiKey='AIzaSyB6xHfPLxTArJQQzUVAs2EV6CZG6UT9HCU'
       >
         <GoogleMap
           id='example-map'
-          mapContainerStyle={{
-            marginTop: "-20px",
-            height: "100vh",
-            width: "100%"
-          }}
+          mapContainerStyle={mapStyles()}
           draggable={true}
           zoom={13}
           center={currentPosition.lat ? currentPosition : defaultCenter}
@@ -92,6 +117,12 @@ const MapContainer = ({ array, isAdding }) => {
           }
         </GoogleMap>
       </LoadScript>
+      {
+        isAdding ?
+        footer :
+        null
+      }
+    </>
      )
   }
 

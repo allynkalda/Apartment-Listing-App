@@ -158,3 +158,18 @@ input:focus {
   align-items: center;
   line-height: 0.05em;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F7DBA7;
+}
+
+.location-text {
+  padding-right: 1rem
+}
+
+.inner-footer {
+  padding: 1rem 0;
+}
