@@ -55,7 +55,7 @@ const getFilteredQuery = gql`
 `;
 
 const addApartmentMutation = gql`
-    mutation addApartment($title: String, $price: Int, $sqm: Int, $bedrooms: Int, $bathrooms: Int,
+    mutation AddApartment($title: String, $price: Int, $sqm: Int, $bedrooms: Int, $bathrooms: Int,
         $image: String, $lat: Float, $lng: Float) {
         addApartment(title: $title, price: $price, sqm: $sqm, bedrooms: $bedrooms, 
         bathrooms: $bathrooms, image: $image, lat: $lat, lng: $lng) {
@@ -65,8 +65,6 @@ const addApartmentMutation = gql`
             bedrooms
             bathrooms
             image
-            lat
-            lng
         }
     }
 `;

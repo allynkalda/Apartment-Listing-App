@@ -12,7 +12,7 @@ export default function InputDetails({ location }) {
         price: 0,
         sqm: 0,
         bathrooms: 0,
-        bedrooms: 100,
+        bedrooms: 0,
         image: '',
         lat: location.lat,
         lng: location.lng
@@ -44,8 +44,8 @@ export default function InputDetails({ location }) {
                 <input type="text" name="image" placeholder="" onChange={(event) => changeHandler(event)}/>
                 <br />
             <Button variant="contained" color="secondary" onClick={() => { addApartment(
-                { variables: { title: state.title, price: state.price, sqm: state.sqm,
-                    bedrooms: state.bedrooms, bathrooms: state.bathrooms, image: state.image,
+                { variables: { title: state.title, price: Number(state.price), sqm: Number(state.sqm),
+                    bedrooms: Number(state.bedrooms), bathrooms: Number(state.bathrooms), image: state.image,
                     lat: state.lat, lng: state.lng }}
                 )}} >
             Add
