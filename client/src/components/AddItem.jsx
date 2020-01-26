@@ -19,7 +19,7 @@ export default function AddItem() {
         {
           showMap ?
           <MapContainer isAdding getLocation={getLocation} /> :
-          <InputDetails />
+          <InputDetails location={location} />
         }
     </div>
   )

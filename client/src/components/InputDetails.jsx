@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { useMutation } from '@apollo/react-hooks';
 import { addApartmentMutation } from '../queries/query';
 
-export default function InputDetails() {
+export default function InputDetails({ location }) {
 
     const [ addApartment, { data } ] = useMutation(addApartmentMutation);
 
@@ -13,7 +13,9 @@ export default function InputDetails() {
         sqm: 0,
         bathrooms: 0,
         bedrooms: 100,
-        image: ''
+        image: '',
+        lat: location.lat,
+        lng: location.lng
     });
 
     const changeHandler = (evt) => {
@@ -24,10 +26,12 @@ export default function InputDetails() {
         })
       };
 
+      console.log(state)
+
     return (
         <div className="filter-container">
             <h4>Description</h4>
-                <input type="text" name="description" placeholder="" onChange={(event) => changeHandler(event)}/>
+                <input type="text" name="title" placeholder="" onChange={(event) => changeHandler(event)}/>
             <h4>Price</h4>
                 <input type="number" name="price" placeholder="" onChange={(event) => changeHandler(event)}/>
             <h4>Square meters</h4>
@@ -40,8 +44,9 @@ export default function InputDetails() {
                 <input type="text" name="image" placeholder="" onChange={(event) => changeHandler(event)}/>
                 <br />
             <Button variant="contained" color="secondary" onClick={() => { addApartment(
-                {variables: { title: state.title, price: state.price, sqm: state.sqm,
-                    bedrooms: state.bedrooms, bathrooms: state.bathrooms, image: state.image }}
+                { variables: { title: state.title, price: state.price, sqm: state.sqm,
+                    bedrooms: state.bedrooms, bathrooms: state.bathrooms, image: state.image,
+                    lat: state.lat, lng: state.lng }}
                 )}} >
             Add
             </Button>
